@@ -1,0 +1,373 @@
+{
+  "project_name": "Мониторинг и реагирование на угрозы",
+  "generated_at": "2026-03-16T18:00:36",
+  "suricata_analysis": {
+    "source_file": "data\\alerts-only.json",
+    "filter_rule": "Событие считается подозрительным, если поле alert.severity равно 1 или 2.",
+    "total_events": 136,
+    "suspicious_events": 113,
+    "unique_source_ips": 42,
+    "unique_destination_ips": 30,
+    "severity_distribution": {
+      "1": 71,
+      "2": 42,
+      "3": 23
+    },
+    "category_distribution_top5": {
+      "Web Application Attack": 27,
+      "A Network Trojan was detected": 24,
+      "Generic Protocol Command Decode": 18,
+      "Attempted Information Leak": 16,
+      "Potential Corporate Privacy Violation": 12
+    },
+    "protocol_distribution": {
+      "TCP": 129,
+      "UDP": 7
+    },
+    "top_source_ips_top5": [
+      {
+        "src_ip": "54.235.163.229",
+        "count": 49
+      },
+      {
+        "src_ip": "192.168.0.54",
+        "count": 11
+      },
+      {
+        "src_ip": "192.168.0.53",
+        "count": 7
+      },
+      {
+        "src_ip": "67.207.202.9",
+        "count": 5
+      },
+      {
+        "src_ip": "66.135.38.206",
+        "count": 4
+      }
+    ],
+    "example_events": [
+      {
+        "timestamp": "2015-03-29T11:01:38.221126-0600",
+        "src_ip": "222.186.56.46",
+        "dest_ip": "192.168.0.2",
+        "dest_port": 22,
+        "severity": 2,
+        "category": "Attempted Information Leak",
+        "signature": "ET SCAN Potential SSH Scan",
+        "http_method": NaN,
+        "url": NaN
+      },
+      {
+        "timestamp": "2015-03-26T18:49:46.900254-0600",
+        "src_ip": "192.168.0.54",
+        "dest_ip": "157.56.114.104",
+        "dest_port": 80,
+        "severity": 1,
+        "category": "Potential Corporate Privacy Violation",
+        "signature": "ET CHAT Skype VOIP Checking Version (Startup)",
+        "http_method": "GET",
+        "url": "/ui/0/7.2.0.103./en/getlatestversion?ver=7.2.0.103&uhash=1fdc256726fe284b6b490bfa128de6f14"
+      },
+      {
+        "timestamp": "2015-03-17T02:18:37.430733-0600",
+        "src_ip": "54.235.163.229",
+        "dest_ip": "192.168.0.2",
+        "dest_port": 80,
+        "severity": 1,
+        "category": "A Network Trojan was detected",
+        "signature": "ET TROJAN HackerDefender Root Kit Remote Connection Attempt Detected",
+        "http_method": NaN,
+        "url": NaN
+      },
+      {
+        "timestamp": "2015-03-26T18:49:46.900254-0600",
+        "src_ip": "192.168.0.54",
+        "dest_ip": "157.56.114.104",
+        "dest_port": 80,
+        "severity": 1,
+        "category": "Potential Corporate Privacy Violation",
+        "signature": "ET CHAT Skype User-Agent detected",
+        "http_method": "GET",
+        "url": "/ui/0/7.2.0.103./en/getlatestversion?ver=7.2.0.103&uhash=1fdc256726fe284b6b490bfa128de6f14"
+      },
+      {
+        "timestamp": "2015-03-17T02:14:59.130726-0600",
+        "src_ip": "54.235.163.229",
+        "dest_ip": "192.168.0.2",
+        "dest_port": 80,
+        "severity": 2,
+        "category": "Attempted Information Leak",
+        "signature": "ET SCAN Nessus User Agent",
+        "http_method": "GET",
+        "url": "/status.php3"
+      }
+    ]
+  },
+  "response_simulation": {
+    "rule": "Если внешний IP встречается в подозрительных событиях 3 раза и более, выводится сообщение об блокировке.",
+    "blocked_ips": [
+      {
+        "src_ip": "54.235.163.229",
+        "events": 49,
+        "action": "Блокировка IP"
+      },
+      {
+        "src_ip": "67.207.202.9",
+        "events": 5,
+        "action": "Блокировка IP"
+      },
+      {
+        "src_ip": "66.135.38.206",
+        "events": 4,
+        "action": "Блокировка IP"
+      },
+      {
+        "src_ip": "92.222.174.249",
+        "events": 3,
+        "action": "Блокировка IP"
+      }
+    ],
+    "messages": [
+      "[РЕАГИРОВАНИЕ] Найден подозрительный внешний источник 54.235.163.229 (49 событий). Выполнена блокировка IP.",
+      "[РЕАГИРОВАНИЕ] Найден подозрительный внешний источник 67.207.202.9 (5 событий). Выполнена блокировка IP.",
+      "[РЕАГИРОВАНИЕ] Найден подозрительный внешний источник 66.135.38.206 (4 событий). Выполнена блокировка IP.",
+      "[РЕАГИРОВАНИЕ] Найден подозрительный внешний источник 92.222.174.249 (3 событий). Выполнена блокировка IP."
+    ]
+  },
+  "vulners_api": {
+    "status": "ok",
+    "message": "Запросы к Vulners API выполнены",
+    "queries": [
+      {
+        "query": "Fortinet AND type:cve order:published",
+        "status": "ok",
+        "items_found": 3,
+        "items_saved": 3,
+        "items": [
+          {
+            "id": "CVE-2025-66178",
+            "title": "CVE-2025-66178",
+            "published": "2026-03-10T16:44:21",
+            "type": "cve",
+            "cvelist": [
+              "CVE-2025-66178"
+            ],
+            "href": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2025-66178",
+            "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiWeb 8.0.0 through 8.0.1, FortiWeb 7.6.0 through 7.6.5, FortiWeb 7.4.0 throug..."
+          },
+          {
+            "id": "CVE-2025-54659",
+            "title": "CVE-2025-54659",
+            "published": "2026-03-10T16:44:20",
+            "type": "cve",
+            "cvelist": [
+              "CVE-2025-54659"
+            ],
+            "href": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2025-54659",
+            "description": "An Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability [CWE-22] vulnerability in Fortinet FortiSOAR Agent Communication Bridge 1.1.0, FortiSOAR Agent Communica..."
+          },
+          {
+            "id": "CVE-2026-24641",
+            "title": "CVE-2026-24641",
+            "published": "2026-03-10T16:44:20",
+            "type": "cve",
+            "cvelist": [
+              "CVE-2026-24641"
+            ],
+            "href": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2026-24641",
+            "description": "A NULL Pointer Dereference vulnerability [CWE-476] vulnerability in Fortinet FortiWeb 8.0.0 through 8.0.2, FortiWeb 7.6.0 through 7.6.6, FortiWeb 7.4 all versions, FortiWeb 7.2 all versions, FortiWeb ..."
+          }
+        ]
+      },
+      {
+        "query": "Apache Tomcat AND type:cve order:published",
+        "status": "ok",
+        "items_found": 3,
+        "items_saved": 3,
+        "items": [
+          {
+            "id": "CVE-2016-20026",
+            "title": "CVE-2016-20026",
+            "published": "2026-03-15T13:35:16",
+            "type": "cve",
+            "cvelist": [
+              "CVE-2016-20026"
+            ],
+            "href": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-20026",
+            "description": "ZKTeco ZKBioSecurity 3.0 contains hardcoded credentials in the bundled Apache Tomcat server that allow unauthenticated attackers to access the manager application. Attackers can authenticate with hard..."
+          },
+          {
+            "id": "CVE-2026-24734",
+            "title": "CVE-2026-24734",
+            "published": "2026-02-17T18:53:12",
+            "type": "cve",
+            "cvelist": [
+              "CVE-2026-24734"
+            ],
+            "href": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2026-24734",
+            "description": "Improper Input Validation vulnerability in Apache Tomcat Native, Apache Tomcat.\n\nWhen using an OCSP responder, Tomcat Native (and Tomcat's FFM port of the Tomcat Native code) did not complete verifica..."
+          },
+          {
+            "id": "CVE-2026-24733",
+            "title": "CVE-2026-24733",
+            "published": "2026-02-17T18:50:43",
+            "type": "cve",
+            "cvelist": [
+              "CVE-2026-24733"
+            ],
+            "href": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2026-24733",
+            "description": "Improper Input Validation vulnerability in Apache Tomcat.\n\n\nTomcat did not limit HTTP/0.9 requests to the GET method. If a security \nconstraint was configured to allow HEAD requests to a URI but deny ..."
+          }
+        ]
+      },
+      {
+        "query": "OpenSSH AND type:cve order:published",
+        "status": "ok",
+        "items_found": 3,
+        "items_saved": 3,
+        "items": [
+          {
+            "id": "CVE-2026-3497",
+            "title": "CVE-2026-3497",
+            "published": "2026-03-12T18:27:44",
+            "type": "cve",
+            "cvelist": [
+              "CVE-2026-3497"
+            ],
+            "href": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2026-3497",
+            "description": "Vulnerability in the OpenSSH GSSAPI delta included in various Linux distributions. This vulnerability affects the GSSAPI patches added by various Linux distributions and does not affect the OpenSSH up..."
+          },
+          {
+            "id": "CVE-2025-61985",
+            "title": "CVE-2025-61985",
+            "published": "2025-10-06T00:00:00",
+            "type": "cve",
+            "cvelist": [
+              "CVE-2025-61985"
+            ],
+            "href": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2025-61985",
+            "description": "ssh in OpenSSH before 10.1 allows the '\\0' character in an ssh:// URI, potentially leading to code execution when a ProxyCommand is used."
+          },
+          {
+            "id": "CVE-2025-61984",
+            "title": "CVE-2025-61984",
+            "published": "2025-10-06T00:00:00",
+            "type": "cve",
+            "cvelist": [
+              "CVE-2025-61984"
+            ],
+            "href": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2025-61984",
+            "description": "ssh in OpenSSH before 10.1 allows control characters in usernames that originate from certain possibly untrusted sources, potentially leading to code execution when a ProxyCommand is used. The untrust..."
+          }
+        ]
+      }
+    ],
+    "samples": [
+      {
+        "id": "CVE-2025-66178",
+        "title": "CVE-2025-66178",
+        "published": "2026-03-10T16:44:21",
+        "type": "cve",
+        "cvelist": [
+          "CVE-2025-66178"
+        ],
+        "href": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2025-66178",
+        "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiWeb 8.0.0 through 8.0.1, FortiWeb 7.6.0 through 7.6.5, FortiWeb 7.4.0 throug..."
+      },
+      {
+        "id": "CVE-2025-54659",
+        "title": "CVE-2025-54659",
+        "published": "2026-03-10T16:44:20",
+        "type": "cve",
+        "cvelist": [
+          "CVE-2025-54659"
+        ],
+        "href": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2025-54659",
+        "description": "An Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability [CWE-22] vulnerability in Fortinet FortiSOAR Agent Communication Bridge 1.1.0, FortiSOAR Agent Communica..."
+      },
+      {
+        "id": "CVE-2026-24641",
+        "title": "CVE-2026-24641",
+        "published": "2026-03-10T16:44:20",
+        "type": "cve",
+        "cvelist": [
+          "CVE-2026-24641"
+        ],
+        "href": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2026-24641",
+        "description": "A NULL Pointer Dereference vulnerability [CWE-476] vulnerability in Fortinet FortiWeb 8.0.0 through 8.0.2, FortiWeb 7.6.0 through 7.6.6, FortiWeb 7.4 all versions, FortiWeb 7.2 all versions, FortiWeb ..."
+      },
+      {
+        "id": "CVE-2016-20026",
+        "title": "CVE-2016-20026",
+        "published": "2026-03-15T13:35:16",
+        "type": "cve",
+        "cvelist": [
+          "CVE-2016-20026"
+        ],
+        "href": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-20026",
+        "description": "ZKTeco ZKBioSecurity 3.0 contains hardcoded credentials in the bundled Apache Tomcat server that allow unauthenticated attackers to access the manager application. Attackers can authenticate with hard..."
+      },
+      {
+        "id": "CVE-2026-24734",
+        "title": "CVE-2026-24734",
+        "published": "2026-02-17T18:53:12",
+        "type": "cve",
+        "cvelist": [
+          "CVE-2026-24734"
+        ],
+        "href": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2026-24734",
+        "description": "Improper Input Validation vulnerability in Apache Tomcat Native, Apache Tomcat.\n\nWhen using an OCSP responder, Tomcat Native (and Tomcat's FFM port of the Tomcat Native code) did not complete verifica..."
+      },
+      {
+        "id": "CVE-2026-24733",
+        "title": "CVE-2026-24733",
+        "published": "2026-02-17T18:50:43",
+        "type": "cve",
+        "cvelist": [
+          "CVE-2026-24733"
+        ],
+        "href": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2026-24733",
+        "description": "Improper Input Validation vulnerability in Apache Tomcat.\n\n\nTomcat did not limit HTTP/0.9 requests to the GET method. If a security \nconstraint was configured to allow HEAD requests to a URI but deny ..."
+      },
+      {
+        "id": "CVE-2026-3497",
+        "title": "CVE-2026-3497",
+        "published": "2026-03-12T18:27:44",
+        "type": "cve",
+        "cvelist": [
+          "CVE-2026-3497"
+        ],
+        "href": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2026-3497",
+        "description": "Vulnerability in the OpenSSH GSSAPI delta included in various Linux distributions. This vulnerability affects the GSSAPI patches added by various Linux distributions and does not affect the OpenSSH up..."
+      },
+      {
+        "id": "CVE-2025-61985",
+        "title": "CVE-2025-61985",
+        "published": "2025-10-06T00:00:00",
+        "type": "cve",
+        "cvelist": [
+          "CVE-2025-61985"
+        ],
+        "href": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2025-61985",
+        "description": "ssh in OpenSSH before 10.1 allows the '\\0' character in an ssh:// URI, potentially leading to code execution when a ProxyCommand is used."
+      },
+      {
+        "id": "CVE-2025-61984",
+        "title": "CVE-2025-61984",
+        "published": "2025-10-06T00:00:00",
+        "type": "cve",
+        "cvelist": [
+          "CVE-2025-61984"
+        ],
+        "href": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2025-61984",
+        "description": "ssh in OpenSSH before 10.1 allows control characters in usernames that originate from certain possibly untrusted sources, potentially leading to code execution when a ProxyCommand is used. The untrust..."
+      }
+    ]
+  },
+  "output_files": {
+    "report": "outputs\\report.json",
+    "chart": "outputs\\top_source_ip.png",
+    "vulners_samples": "outputs\\report_vulners.json"
+  }
+}
