@@ -38,7 +38,7 @@
 ## Структура проекта
 
 ```text
-security_project/
+DZ_itog/
 ├── data/
 │   └── alerts-only.json
 ├── outputs/
