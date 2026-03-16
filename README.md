@@ -22,7 +22,7 @@
 
 Демонстрация работы с внешним API.
 
-* ключ берётся из переменной окружения `VULNERS\_API\_KEY`;
+* ключ берётся из переменной окружения `VULNERS_API_KEY`;
 * если ключ не задан, программа не падает, а выводит понятное сообщение.
 
 ## Логика проекта
@@ -38,13 +38,13 @@
 ## Структура проекта
 
 ```text
-security\_project/
+security_project/
 ├── data/
 │   └── alerts-only.json
 ├── outputs/
 │   ├── report.json
-│   ├── top\_source\_ip.png
-│   └── report\_vulners.json
+│   ├── top_source_ip.png
+│   └── report_vulners.json
 ├── main.py
 ├── requirements.txt
 └── README.md
@@ -73,21 +73,21 @@ python main.py
 #### Windows PowerShell
 
 ```powershell
-$env:VULNERS\_API\_KEY="ВАШ\_КЛЮЧ"
+$env:VULNERS_API_KEY="ВАШ_КЛЮЧ"
 python main.py
 ```
 
 #### Windows cmd
 
 ```cmd
-set VULNERS\_API\_KEY=ВАШ\_КЛЮЧ
+set VULNERS_API_KEY=ВАШ_КЛЮЧ
 python main.py
 ```
 
 #### Linux / macOS
 
 ```bash
-export VULNERS\_API\_KEY="ВАШ\_КЛЮЧ"
+export VULNERS_API_KEY="ВАШ_КЛЮЧ"
 python main.py
 ```
 
@@ -96,8 +96,8 @@ python main.py
 После запуска создаются файлы:
 
 * `outputs/report.json` — основной итоговый отчёт;
-* `outputs/top\_source\_ip.png` — график топ-5 source IP по подозрительным событиям;
-* `outputs/report\_vulners.json` — сохранённые результаты запросов к Vulners API.
+* `outputs/top_source_ip.png` — график топ-5 source IP по подозрительным событиям;
+* `outputs/report_vulners.json` — сохранённые результаты запросов к Vulners API.
 
 ## Что находится в report.json
 
